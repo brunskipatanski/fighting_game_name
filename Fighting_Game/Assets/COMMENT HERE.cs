@@ -20,7 +20,8 @@ public class COMMENTHERE : MonoBehaviour
 
 
 
-
+// ok we use transform for horizontal movement and rb for jumps and shit
+//use tags!
 
 
 
