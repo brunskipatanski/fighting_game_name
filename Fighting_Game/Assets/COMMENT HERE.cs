@@ -15,3 +15,52 @@ public class COMMENTHERE : MonoBehaviour
 
     // and we are using scenes in this project guys. each stage has theyr own scene. main menus and shit. dont need to make every part of the game on the same page/scene. Basic_FallBack_stage is for testing and fallback
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Sneaky Baller lurking here hehe!
+ * 
+ * He is not down completely */
