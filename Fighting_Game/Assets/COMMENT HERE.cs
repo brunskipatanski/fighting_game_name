@@ -14,4 +14,6 @@ public class COMMENTHERE : MonoBehaviour
      * end when camera is implemented*/
 
     // and we are using scenes in this project guys. each stage has theyr own scene. main menus and shit. dont need to make every part of the game on the same page/scene. Basic_FallBack_stage is for testing and fallback
+
+    //btw learn to use basic stuff like tags, for stages players and such. i dont wanna have to run around our project tagging shit over and over. makes coding easy 2
 }
