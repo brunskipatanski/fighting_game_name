@@ -24,6 +24,11 @@ public class COMMENTHERE : MonoBehaviour
 //use tags!
 
 
+/*12.10,,, i started working on some more movement code mainly focusing on the jump since the jump is really important in fgs. got the char to jump but got some other problems. 
+ * char rn wont jump by pressing W for some reason idk maybe tags arent set up right. jumping with fixedupdate doesnt work well rn. so i made the entire move method just an update. we should figure out how to get it working in fixed
+ * since other wise the movement will depend on the hardwares fps. i also set up some tags for the stage and players. idk if i did it good tho.  /*
+
+
 
 
 
