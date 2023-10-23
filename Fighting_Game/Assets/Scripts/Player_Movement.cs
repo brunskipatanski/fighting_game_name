@@ -83,6 +83,7 @@ public class Player_Movement : MonoBehaviour
         }
         if (Input.GetKey("s"))
         {
+            // could try GetKeyDown like on the other control, theres a difference might fix bugs
             gameObject.GetComponent<SpriteRenderer>().sprite = Crouch;
             Anime.SetBool("Crouch", true);
             Anime.SetBool("Idle", false);
@@ -92,6 +93,7 @@ public class Player_Movement : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = Standing;
             Anime.SetBool("Idle", true);
             Anime.SetBool("Crouch", false);
+            //aaded sprites trhu code? would using this be way less efficent then the build in tools for animation stuff on unity? and the amount of moves 2
         }
     }
 
@@ -106,7 +108,7 @@ public class Player_Movement : MonoBehaviour
         {
             AllowMove = true;
             //check if player is grounded. remember to place those tags
-            //alsoe sets the grounded var and allowmove for the stuff they are for
+            //also sets the grounded var and allowmove for the stuff they are for
         }
 
         foreach (ContactPoint2D contact in collision.contacts)
@@ -132,7 +134,7 @@ public class Player_Movement : MonoBehaviour
             BlockLeft = false;
             // unbocks the movement right and left
         }
-
+        //^^ is this code for blocking like attacks? or some bug fix?
         if (collision.gameObject.CompareTag("Ground"))
         {
             Grounded = false;
