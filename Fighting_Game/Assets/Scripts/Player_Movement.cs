@@ -25,8 +25,12 @@ public class Player_Movement : MonoBehaviour
     public Sprite Standing;
     private SpriteRenderer spriteRenderer;
     public Animator Anime;
+    public bool BlockRight = false;
+    public bool BlockLeft = false;
+
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>(); // used for the jump. since we arent using transform for jumping
     }
 
@@ -36,23 +40,24 @@ public class Player_Movement : MonoBehaviour
     //collision detection should be continuous
     void Update()
     {
+
         if (AllowMove)//check for movement
         {
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) && !BlockRight)
             {
-                transform.position = transform.position + (Vector3.right * MoveSpeed) * Time.deltaTime;
+                transform.position = (Vector2) transform.position + (Vector2.right * MoveSpeed) * Time.deltaTime;
                 MovingRight = true;
                 MovingLeft = false;
                 IsMoving = true;
-                Debug.Log("Player Moving right");
+                //Debug.Log("Player Moving right");
             }
-            else if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A) && !BlockLeft)
             {
-                transform.position = transform.position + (Vector3.left * MoveSpeed) * Time.deltaTime;
+                transform.position = (Vector2) transform.position + (Vector2.left * MoveSpeed) * Time.deltaTime;
                 MovingLeft = true;
                 MovingRight = false;
                 IsMoving = true;
-                Debug.Log("Player Moving left");
+                //Debug.Log("Player Moving left");
             }
             else
             {
@@ -103,9 +108,31 @@ public class Player_Movement : MonoBehaviour
             //check if player is grounded. remember to place those tags
             //alsoe sets the grounded var and allowmove for the stuff they are for
         }
+
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            if (contact.normal == Vector2.left)
+            {
+                // Collision occurred from the right side.
+
+                BlockRight = true;
+                Debug.Log("Collision from the Right!");
+            }
+            if (contact.normal == Vector2.right) {
+                BlockLeft = true;
+                Debug.Log("Collision from the Left!");
+            }
+        }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            BlockRight = false;
+            BlockLeft = false;
+            // unbocks the movement right and left
+        }
+
         if (collision.gameObject.CompareTag("Ground"))
         {
             Grounded = false;
