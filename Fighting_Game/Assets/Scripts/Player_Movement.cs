@@ -24,6 +24,7 @@ public class Player_Movement : MonoBehaviour
     public Sprite Crouch;
     public Sprite Standing;
     private SpriteRenderer spriteRenderer;
+    public Animator Anime;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // used for the jump. since we arent using transform for jumping
@@ -78,10 +79,14 @@ public class Player_Movement : MonoBehaviour
         if (Input.GetKey("s"))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = Crouch;
+            Anime.SetBool("Crouch", true);
+            Anime.SetBool("Idle", false);
         }
         if (Input.GetKeyUp("s"))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = Standing;
+            Anime.SetBool("Idle", true);
+            Anime.SetBool("Crouch", false);
         }
     }
 

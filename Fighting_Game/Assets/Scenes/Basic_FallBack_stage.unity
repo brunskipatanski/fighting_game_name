@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 32551286}
   - component: {fileID: 32551288}
   - component: {fileID: 32551289}
+  - component: {fileID: 32551290}
   m_Layer: 0
   m_Name: Balling_dummy_standing
   m_TagString: Untagged
@@ -419,13 +420,35 @@ MonoBehaviour:
   AirDash: 0
   MovingLeft: 0
   MovingRight: 0
-  MoveForce: 0
+  MoveForce: 175
   DoubleJumped: 0
   AirDashed: 0
   AllowMove: 1
   IsMoving: 0
   Crouch: {fileID: 21300000, guid: dca49ce8177e33c47bca0cf222ee2b59, type: 3}
   Standing: {fileID: 21300000, guid: c217c3f09811e2445af82fcf1998e217, type: 3}
+  Anime: {fileID: 32551290}
+--- !u!95 &32551290
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32551283}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad29508e425ff2f45b72dd350bc07654, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &109814283
 GameObject:
   m_ObjectHideFlags: 0
