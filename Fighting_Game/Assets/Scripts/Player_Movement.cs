@@ -21,6 +21,9 @@ public class Player_Movement : MonoBehaviour
     private bool Grounded = false;
     public bool AllowMove = true;
     public bool IsMoving = false;
+    public Sprite Crouch;
+    public Sprite Standing;
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // used for the jump. since we arent using transform for jumping
@@ -71,6 +74,14 @@ public class Player_Movement : MonoBehaviour
             {
                 rb.AddForce(Vector2.right * MoveForce, ForceMode2D.Impulse);
             }
+        }
+        if (Input.GetKey("s"))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = Crouch;
+        }
+        if (Input.GetKeyUp("s"))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = Standing;
         }
     }
 
