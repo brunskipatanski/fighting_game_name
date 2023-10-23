@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
     //speed and jumpforce are controlled by the sidebar >>>>>
-    /* ill add the details later :D */
+    /*Doublejump force is for double jump. it's its own var for easy coding with airadash. movingleft-right are used for jumping and maybe blocking in the future. you can name 
+     other stuff like MoveRight or MoveLeft for example controls. grounded var is used for reading if players are hitting the ground it usus the ground tag so be sure to set that shit up.
+     Allowmove enables or disables the ability to move your char, for jumping and knockdown. is moving is for other general stuff like neutral jump.*/
     public float MoveSpeed;
     public float JumpForce;
     public float DoubleJumpForce;
@@ -64,7 +66,7 @@ public class Player_Movement : MonoBehaviour
             {
                 rb.AddForce(Vector2.left * MoveForce, ForceMode2D.Impulse);
             }
-
+            //code used for launching the player in the direction they are holding. left for left and right for right.
             else if (MovingRight == true)
             {
                 rb.AddForce(Vector2.right * MoveForce, ForceMode2D.Impulse);
@@ -82,6 +84,8 @@ public class Player_Movement : MonoBehaviour
         if (Grounded == true)
         {
             AllowMove = true;
+            //check if player is grounded. remember to place those tags
+            //alsoe sets the grounded var and allowmove for the stuff they are for
         }
     }
     void OnCollisionExit2D(Collision2D collision)
@@ -89,6 +93,7 @@ public class Player_Movement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             Grounded = false;
+            // above code of this one checks if player is touching object tagged "ground" this one check the smae but for Exit so when you stop touching.
         }
 
     }
