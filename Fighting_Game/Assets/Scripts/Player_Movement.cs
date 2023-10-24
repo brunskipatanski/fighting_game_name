@@ -111,20 +111,25 @@ public class Player_Movement : MonoBehaviour
             //also sets the grounded var and allowmove for the stuff they are for
         }
 
-        foreach (ContactPoint2D contact in collision.contacts)
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            if (contact.normal == Vector2.left)
+            foreach (ContactPoint2D contact in collision.contacts)
             {
-                // Collision occurred from the right side.
+                if (contact.normal == Vector2.left)
+                {
+                    // Collision occurred from the right side.
 
-                BlockRight = true;
-                Debug.Log("Collision from the Right!");
+                    BlockRight = true;
+                    Debug.Log("Collision from the Right!");
+                }
+                if (contact.normal == Vector2.right) {
+                    BlockLeft = true;
+                    Debug.Log("Collision from the Left!");
+                }
             }
-            if (contact.normal == Vector2.right) {
-                BlockLeft = true;
-                Debug.Log("Collision from the Left!");
-            }
+
         }
+
     }
     void OnCollisionExit2D(Collision2D collision)
     {

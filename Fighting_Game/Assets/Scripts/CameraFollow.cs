@@ -2,20 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
-    public Transform player; // Reference to the player's transform
-    public float followThreshold; // X position where the camera starts to follow
+    public float moveSpeed = 5f;
 
-    private void Update()
+    void Update()
     {
-        // Check if the player's position is greater than the followThreshold
-        if (player.position.x > followThreshold)
+        float horizontalInput = 0f;
+
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            // Calculate the camera's new position to follow the player
-            Vector2 newPosition = transform.position;
-            newPosition.x = player.position.x;
-            transform.position = newPosition;
+            horizontalInput = -1f; // Left arrow key
         }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            horizontalInput = 1f; // Right arrow key
+        }
+
+
+        // Calculate the new camera position
+        Vector3 newPosition = transform.position + new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0f, 0f);
+
+
+        // Update the camera position
+        transform.position = newPosition;
     }
 }
