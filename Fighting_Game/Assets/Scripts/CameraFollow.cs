@@ -6,7 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
 
-    void Update()
+    void FixedUpdate()
     {
         float horizontalInput = 0f;
 

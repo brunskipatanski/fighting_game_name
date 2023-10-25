@@ -255,8 +255,8 @@ GameObject:
   - component: {fileID: 32551287}
   - component: {fileID: 32551286}
   - component: {fileID: 32551288}
-  - component: {fileID: 32551289}
   - component: {fileID: 32551290}
+  - component: {fileID: 32551291}
   m_Layer: 0
   m_Name: Balling_dummy_standing
   m_TagString: Untagged
@@ -273,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 32551283}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.81, y: -1.93, z: 0.16101868}
+  m_LocalPosition: {x: -1, y: -1.93, z: 0.16101868}
   m_LocalScale: {x: 2.2, y: 2.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -305,7 +305,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &32551287
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -390,7 +390,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.000000059604645, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -401,36 +401,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.07, y: 2}
+  m_Size: {x: 1.08, y: 2}
   m_EdgeRadius: 0
---- !u!114 &32551289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32551283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1a169267726e684884d788b9fb6a5aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 14
-  JumpForce: 600
-  DoubleJumpForce: 0
-  AirDash: 0
-  MovingLeft: 0
-  MovingRight: 0
-  MoveForce: 210
-  DoubleJumped: 0
-  AirDashed: 0
-  AllowMove: 1
-  IsMoving: 0
-  Crouch: {fileID: 21300000, guid: dca49ce8177e33c47bca0cf222ee2b59, type: 3}
-  Standing: {fileID: 21300000, guid: c217c3f09811e2445af82fcf1998e217, type: 3}
-  Anime: {fileID: 32551290}
-  BlockRight: 0
-  BlockLeft: 0
 --- !u!95 &32551290
 Animator:
   serializedVersion: 5
@@ -452,6 +424,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &32551291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32551283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4639edc1508fa14a88f303217df854e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 30
+  blockLeft: 0
+  blockRight: 0
 --- !u!1 &109814283
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +467,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8, y: -4.7, z: 0.0026108976}
-  m_LocalScale: {x: 43.03, y: 1, z: 1}
+  m_LocalScale: {x: 48.36, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 14649885}
@@ -715,7 +702,7 @@ Transform:
   m_GameObject: {fileID: 856312994}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29, y: 18.11, z: 0.0026108976}
+  m_LocalPosition: {x: 30, y: 18.11, z: 0.0026108976}
   m_LocalScale: {x: 1, y: 46.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -845,7 +832,7 @@ Transform:
   m_GameObject: {fileID: 961350160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.07, y: 18.28, z: 0.0026108976}
+  m_LocalPosition: {x: -15, y: 18.28, z: 0.0026108976}
   m_LocalScale: {x: 1, y: 46.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
