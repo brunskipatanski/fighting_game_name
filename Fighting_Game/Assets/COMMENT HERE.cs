@@ -34,6 +34,15 @@ public class COMMENTHERE : MonoBehaviour
 Jump feel can be discussed between the 3 of us. next up im working on double jump and air dash. 👓
 
 
+27.10,,, not sure with what kinds of thing you changed AT, like character size, just feels really tiny, like the chars are the things you are looking at the most, so why not make them bigger👓
+feels wierd to ahve them take it sucha  small amount of screen space. 👓
+idk w´hy you made the background like that, maybe comsentate with the char size? now it looks like complete ass and is blurred to hell. i get that its a test background and shit. but we cant just make every background like that👓
+we should make them to fit the stage not just bigger so they do. the background i amde was made for the stage. 👓
+I changed some of the jump code to implement the double jump. it now checks, if (Grounded == true),,, after Input W. and if else if (Grounded == false && DoubleJumped == false) it does the double jump. 👓
+isnt working 100% correctly yeat got it to jump but wont register my left adn right movemtns and only does a nautral jump.👓
+1 big improment would be to change all the KeyCode.W´shits and ll that to just be controles. like if jump == true; does shit. so we can set up the controls, also allows for more code in the future👓
+
+
 
 
 

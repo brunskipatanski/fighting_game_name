@@ -7,7 +7,8 @@ public class Player_Movement : MonoBehaviour
     //speed and jumpforce are controlled by the sidebar >>>>>
     /*Doublejump force is for double jump. it's its own var for easy coding with airadash. movingleft-right are used for jumping and maybe blocking in the future. you can name 
      other stuff like MoveRight or MoveLeft for example controls. grounded var is used for reading if players are hitting the ground it usus the ground tag so be sure to set that shit up.
-     Allowmove enables or disables the ability to move your char, for jumping and knockdown. is moving is for other general stuff like neutral jump.*/
+     Allowmove enables or disables the ability to move your char, for jumping and knockdown. is moving is for other general stuff like neutral jump.
+    DoubleJumpForce is for neutral doublejumps, DoubleMoveForce is for Left and right ones. i also changed to jump code a bit*/
     public float MoveSpeed;
     public float JumpForce;
     public float DoubleJumpForce;
@@ -15,6 +16,7 @@ public class Player_Movement : MonoBehaviour
     public bool MovingLeft;
     public bool MovingRight;
     public float MoveForce;
+    public float DoubleMoveForce;
     public bool DoubleJumped = false;
     public bool AirDashed = false;
     private Rigidbody2D rb;
@@ -66,19 +68,47 @@ public class Player_Movement : MonoBehaviour
                 MovingRight = false;
             }
         }
-        if (Input.GetKeyDown(KeyCode.W) && Grounded == true)
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            //transform.position.AddForce(Vector3.up * JumpForce, ForceMode2D.Impulse);
-            rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
-            AllowMove = false; //main line for making it so you cant move in-air
-            if (MovingLeft == true)
+            if (Grounded == true)
             {
-                rb.AddForce(Vector2.left * MoveForce, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+                AllowMove = false; //main line for making it so you cant move in-air
+
+                if (MovingLeft == true)
+                {
+                    rb.AddForce(Vector2.left * MoveForce, ForceMode2D.Impulse);
+                }
+                //code used for launching the player in the direction they are holding. left for left and right for right.
+                else if (MovingRight == true)
+                {
+                    rb.AddForce(Vector2.right * MoveForce, ForceMode2D.Impulse);
+                }
             }
-            //code used for launching the player in the direction they are holding. left for left and right for right.
-            else if (MovingRight == true)
+            
+            else if (Grounded == false && DoubleJumped == false)
             {
-                rb.AddForce(Vector2.right * MoveForce, ForceMode2D.Impulse);
+                rb.velocity = Vector2.zero;
+                rb.AddForce(Vector2.up * DoubleJumpForce, ForceMode2D.Impulse);
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)))
+                {
+
+                    if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                    {
+                        rb.AddForce(Vector2.up * DoubleJumpForce, ForceMode2D.Impulse);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.A))
+                    {
+                        rb.AddForce(Vector2.left * DoubleMoveForce, ForceMode2D.Impulse);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.D))
+                    {
+                        rb.AddForce(Vector2.right * DoubleMoveForce, ForceMode2D.Impulse);
+                    }
+                }
+                AllowMove = false;
+                DoubleJumped = true;
+                Debug.Log("DoubleJumped");
             }
         }
         if (Input.GetKey("s"))
@@ -103,10 +133,12 @@ public class Player_Movement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             Grounded = true;
+            DoubleJumped = false;
         }
         if (Grounded == true)
         {
             AllowMove = true;
+
             //check if player is grounded. remember to place those tags
             //also sets the grounded var and allowmove for the stuff they are for
         }
