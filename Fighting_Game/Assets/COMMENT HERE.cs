@@ -44,6 +44,13 @@ isnt working 100% correctly yeat got it to jump but wont register my left adn ri
 
 
 
+31.10,,, got the double jumo working. had an issue where i was deleting any forces before the double jump, so the character didnt stack the velocity up and become a bullet. 👓
+also lets the char do like a fake jump. where they jump forward and then double jump back. works the other way around 2. im happy :)👓
+if u guys are reading this, main thing someoen shoudl rly focus on rn is making all the inputs and options. like instead of getkeydown blah blah its just a designated key the user can set.👓
+once we have that we cna start implementing the player 2 character cos we can seperate the controlrs. and ofc once we got 2 players. we cant get the actual game working and stuff like the camera working 2.👓
+
+
+
 
 
 

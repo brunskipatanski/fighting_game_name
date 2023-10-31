@@ -72,45 +72,37 @@ public class Player_Movement : MonoBehaviour
         {
             if (Grounded == true)
             {
+                rb.velocity = Vector2.zero;  // < these lines are for removing any other forces. in this case the jumps horizontal force
                 rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
-                AllowMove = false; //main line for making it so you cant move in-air
+                AllowMove = false; // Main line for making it so you can't move in the air
 
                 if (MovingLeft == true)
                 {
                     rb.AddForce(Vector2.left * MoveForce, ForceMode2D.Impulse);
                 }
-                //code used for launching the player in the direction they are holding. left for left and right for right.
                 else if (MovingRight == true)
                 {
                     rb.AddForce(Vector2.right * MoveForce, ForceMode2D.Impulse);
                 }
             }
-            
-            else if (Grounded == false && DoubleJumped == false)
+            else if (DoubleJumped == false)
             {
-                rb.velocity = Vector2.zero;
+                rb.velocity = Vector2.zero;  
                 rb.AddForce(Vector2.up * DoubleJumpForce, ForceMode2D.Impulse);
-                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)))
+                if (Input.GetKey(KeyCode.A))
                 {
-
-                    if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-                    {
-                        rb.AddForce(Vector2.up * DoubleJumpForce, ForceMode2D.Impulse);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.A))
-                    {
-                        rb.AddForce(Vector2.left * DoubleMoveForce, ForceMode2D.Impulse);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.D))
-                    {
-                        rb.AddForce(Vector2.right * DoubleMoveForce, ForceMode2D.Impulse);
-                    }
+                    rb.AddForce(Vector2.left * DoubleMoveForce, ForceMode2D.Impulse);
+                }
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    rb.AddForce(Vector2.right * DoubleMoveForce, ForceMode2D.Impulse);
                 }
                 AllowMove = false;
                 DoubleJumped = true;
                 Debug.Log("DoubleJumped");
             }
         }
+
         if (Input.GetKey("s"))
         {
             // could try GetKeyDown like on the other control, theres a difference might fix bugs
@@ -123,7 +115,6 @@ public class Player_Movement : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = Standing;
             Anime.SetBool("Idle", true);
             Anime.SetBool("Crouch", false);
-            //aaded sprites trhu code? would using this be way less efficent then the build in tools for animation stuff on unity? and the amount of moves 2
         }
     }
 
