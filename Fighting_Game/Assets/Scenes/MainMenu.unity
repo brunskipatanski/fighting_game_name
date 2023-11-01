@@ -495,6 +495,7 @@ GameObject:
   - component: {fileID: 247555565}
   - component: {fileID: 247555564}
   - component: {fileID: 247555563}
+  - component: {fileID: 247555567}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -589,6 +590,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &247555567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247555562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f83aefac79f02e4faf91313cc8af8ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMainMenuSelectedButton: {fileID: 1414647465}
+  defaultSettingsMenuSelectedButton: {fileID: 1552860876}
+  defaultKeyboardSettingSelectedButton: {fileID: 1923285213}
+  defaultVolumeSettingSelectedButton: {fileID: 1649645712}
+  mainMenuSelectedButtonUponSettingsQuit: {fileID: 935625267}
+  settingsMenuSelectedButtonUponVolumeQuit: {fileID: 616361189}
 --- !u!1 &301838176
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,7 +725,7 @@ GameObject:
   - component: {fileID: 341208013}
   - component: {fileID: 341208012}
   m_Layer: 5
-  m_Name: ExitButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -878,7 +897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 2
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -908,7 +927,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 386706029}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1941983853}
+        m_TargetAssemblyTypeName: ReassignKeys, Assembly-CSharp
+        m_MethodName: MotionRightKeyReasign
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &386706029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1166,7 +1197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 513977106}
   m_Layer: 0
-  m_Name: MoveLeftKey
+  m_Name: MoveLeftKeyField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1533,6 +1564,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 247555567}
+        m_TargetAssemblyTypeName: AutoSelect, Assembly-CSharp
+        m_MethodName: EnableFocusOnVolumeSettingMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2222,6 +2265,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 247555567}
+        m_TargetAssemblyTypeName: AutoSelect, Assembly-CSharp
+        m_MethodName: EnableFocusOnSettingsMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &935625268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2312,10 +2367,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_Mode: 4
+    m_WrapAround: 1
+    m_SelectOnUp: {fileID: 1104145415}
+    m_SelectOnDown: {fileID: 1923285213}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -2359,6 +2414,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 247555567}
+        m_TargetAssemblyTypeName: AutoSelect, Assembly-CSharp
+        m_MethodName: EnableFocusOnSettingsMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2455,7 +2522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.01886791, g: 0, b: 0, a: 0.31764707}
+  m_Color: {r: 0.8867924, g: 0.7905838, b: 0.7905838, a: 0.31764707}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2490,7 +2557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1046550444}
   m_Layer: 0
-  m_Name: MoveRightKey
+  m_Name: MoveRightKeyField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2565,7 +2632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 2
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2595,7 +2662,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1104145416}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1941983853}
+        m_TargetAssemblyTypeName: ReassignKeys, Assembly-CSharp
+        m_MethodName: MotionLeftKeyReasign
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1104145416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3327,6 +3406,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 247555567}
+        m_TargetAssemblyTypeName: AutoSelect, Assembly-CSharp
+        m_MethodName: EnableFocusOnKeyboardSettingMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1552860877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3450,6 +3541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1649645711}
   - component: {fileID: 1649645712}
+  - component: {fileID: 1649645713}
   m_Layer: 5
   m_Name: VolumeSlider
   m_TagString: Untagged
@@ -3492,8 +3584,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
+    m_Mode: 2
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3529,19 +3621,21 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1649645713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649645710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95d994d8a4b9b5418696cf26887d95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSelectColor: {r: 0.9811321, g: 0.96724814, b: 0.96724814, a: 0.972549}
+  onDeselectColor: {r: 0.6509804, g: 0.6117647, b: 0.6117647, a: 1}
 --- !u!1 &1692953608
 GameObject:
   m_ObjectHideFlags: 0
@@ -3892,7 +3986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1863049256}
   m_Layer: 0
-  m_Name: JumpKey
+  m_Name: JumpKeyField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3967,8 +4061,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
+    m_Mode: 2
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3997,7 +4091,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1923285214}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1941983853}
+        m_TargetAssemblyTypeName: ReassignKeys, Assembly-CSharp
+        m_MethodName: JumpKeyReassign
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1923285214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4143,6 +4249,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 247555567}
+        m_TargetAssemblyTypeName: AutoSelect, Assembly-CSharp
+        m_MethodName: EnableFocusOnMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1924206485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4190,8 +4308,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1941983852}
+  - component: {fileID: 1941983853}
   m_Layer: 5
-  m_Name: KeyInputSetting
+  m_Name: InputKeysSetting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4220,6 +4339,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1941983853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941983851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa68b70fc2ce674986418bccbf22197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpKeyButtonText: {fileID: 1286763150}
+  motionRightKeyButtonText: {fileID: 670264592}
+  motionLeftKeyButtonText: {fileID: 412647354}
 --- !u!1 &2007350425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4406,8 +4540,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
+    m_Mode: 2
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4453,6 +4587,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 247555567}
+        m_TargetAssemblyTypeName: AutoSelect, Assembly-CSharp
+        m_MethodName: EnableFocusOnSettingsMenuUponVolumeSettingQuit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
