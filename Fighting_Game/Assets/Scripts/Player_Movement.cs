@@ -45,7 +45,13 @@ public class Player_Movement : MonoBehaviour
 
         if (AllowMove)//check for movement
         {
-            if (Input.GetKey(KeyCode.D) && !BlockRight)
+            if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.A))
+            {
+                IsMoving = false;
+                MovingLeft = false;
+                MovingRight = false;
+            }
+            else if (Input.GetKey(KeyCode.D) && !BlockRight)
             {
                 transform.position = (Vector2) transform.position + (Vector2.right * MoveSpeed) * Time.deltaTime;
                 MovingRight = true;
