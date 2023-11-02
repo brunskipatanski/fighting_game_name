@@ -25,10 +25,11 @@ public class Player_Movement : MonoBehaviour
     public bool IsMoving = false;
     public Sprite Crouch;
     public Sprite Standing;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer SpriteRenderer;
     public Animator Anime;
     public bool BlockRight = false;
     public bool BlockLeft = false;
+    public float Crouchspeed;
 
     void Start()
     {
@@ -115,12 +116,20 @@ public class Player_Movement : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = Crouch;
             Anime.SetBool("Crouch", true);
             Anime.SetBool("Idle", false);
+            MoveSpeed = 4;
+            Debug.Log("Crouch");
+
         }
         if (Input.GetKeyUp("s"))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = Standing;
-            Anime.SetBool("Idle", true);
             Anime.SetBool("Crouch", false);
+            Anime.SetBool("Idle", true);
+            MoveSpeed = 8;
+            Debug.Log("Crouch was released");
+        }
+        {
+            
         }
     }
 

@@ -450,9 +450,10 @@ MonoBehaviour:
   IsMoving: 0
   Crouch: {fileID: 0}
   Standing: {fileID: 0}
-  Anime: {fileID: 0}
+  Anime: {fileID: 32551290}
   BlockRight: 0
   BlockLeft: 0
+  Crouchspeed: 0
 --- !u!1 &109814283
 GameObject:
   m_ObjectHideFlags: 0
