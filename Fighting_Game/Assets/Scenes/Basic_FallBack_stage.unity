@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 32551288}
   - component: {fileID: 32551290}
   - component: {fileID: 32551291}
+  - component: {fileID: 32551292}
   m_Layer: 0
   m_Name: Balling_dummy_standing
   m_TagString: Untagged
@@ -436,6 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a169267726e684884d788b9fb6a5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1Controls: {fileID: 0}
+  player2Controls: {fileID: 0}
   MoveSpeed: 8
   JumpForce: 200
   DoubleJumpForce: 160
@@ -454,6 +457,18 @@ MonoBehaviour:
   BlockRight: 0
   BlockLeft: 0
   Crouchspeed: 0
+--- !u!114 &32551292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32551283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06de36d8e48d824b90a249da813742d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &68867161
 GameObject:
   m_ObjectHideFlags: 0

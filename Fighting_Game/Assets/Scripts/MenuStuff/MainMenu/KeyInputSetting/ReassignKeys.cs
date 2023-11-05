@@ -27,7 +27,7 @@ public class ReassignKeys : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -39,14 +39,13 @@ public class ReassignKeys : MonoBehaviour
             if (focusedButtonTextObject != null)
             {
                 // focusedButtonOldText = focusedButtonTextObject.text;
-
                 focusedButtonTextObject.text = "\" \"";
                 isFocused = false;
             }
         }
 
     }
-
+    // AT, PLEASE add some comments on this bruh v_v, figured most of it out but plz. 
     public void JumpKeyReassign()
     {
         isFocused = true;
