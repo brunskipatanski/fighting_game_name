@@ -18,8 +18,7 @@ public class Player_Movement2 : MonoBehaviour
     private bool Grounded = false;
     public bool AllowMove = true;
     public bool IsMoving = false;
-    public Sprite Crouch;
-    public Sprite Standing;
+    private SpriteRenderer sprite;
     public Animator Anime;
     public bool BlockRight = false;
     public bool BlockLeft = false;
@@ -28,6 +27,8 @@ public class Player_Movement2 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Anime = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -45,7 +46,14 @@ public class Player_Movement2 : MonoBehaviour
                 transform.position = (Vector2)transform.position + (Vector2.right * MoveSpeed) * Time.deltaTime;
                 MovingRight = true;
                 MovingLeft = false;
+                //For animations
                 IsMoving = true;
+                Anime.SetBool("Walking", true);
+
+            }
+            else if (Input.GetKeyUp(player2Controls.Right) && !BlockRight)//This is for animaton so it stop when the right key is not pressed.
+            {
+                Anime.SetBool("Walking", false);
             }
             else if (Input.GetKey(player2Controls.Left) && !BlockLeft)
             {
@@ -53,6 +61,14 @@ public class Player_Movement2 : MonoBehaviour
                 MovingLeft = true;
                 MovingRight = false;
                 IsMoving = true;
+                //For animations
+                Anime.SetBool("Walking", true);
+                sprite.flipX = true;
+            }
+            else if (Input.GetKeyUp(player2Controls.Left) && !BlockLeft)//This is for animation so it stop when the button is not pressed and the flip is for when the button is not pressed it flips the sprite back to the right side.
+            {
+                Anime.SetBool("Walking", false);
+                sprite.flipX = false;
             }
             else
             {
@@ -69,12 +85,13 @@ public class Player_Movement2 : MonoBehaviour
                 rb.velocity = Vector2.zero;
                 rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
                 AllowMove = false;
+                
 
                 if (MovingLeft == true)
                 {
                     rb.AddForce(Vector2.left * MoveForce, ForceMode2D.Impulse);
                 }
-                else if (MovingRight == true)
+                else if (MovingRight == true) 
                 {
                     rb.AddForce(Vector2.right * MoveForce, ForceMode2D.Impulse);
                 }
@@ -98,17 +115,23 @@ public class Player_Movement2 : MonoBehaviour
 
         if (Input.GetKey(player2Controls.Down))
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = Crouch;
+
             Anime.SetBool("Crouch", true);
-            Anime.SetBool("Idle", false);
             MoveSpeed = 4;
         }
         if (Input.GetKeyUp(player2Controls.Down))
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = Standing;
+
             Anime.SetBool("Crouch", false);
-            Anime.SetBool("Idle", true);
             MoveSpeed = 8;
+        }
+        if (Input.GetKey(player2Controls.A_Attack))
+        {
+            Anime.SetBool("Punch", true);
+        }
+        if (Input.GetKeyUp(player2Controls.A_Attack))
+        {
+            Anime.SetBool("Punch", false);
         }
     }
 
