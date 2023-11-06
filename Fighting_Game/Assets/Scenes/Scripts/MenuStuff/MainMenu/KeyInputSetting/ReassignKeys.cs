@@ -43,7 +43,19 @@ public class ReassignKeys : MonoBehaviour
                     {
                         Debug.Log("Key pressed: " + keyCode);
                         focusedButtonTextObject.text = "\"" + keyCode.ToString().ToLower() + "\"";
-                        // You can perform actions based on the specific key press here.
+
+                        if (focusedButtonTextObject == jumpKeyButtonText)
+                        {
+                            PlayerPrefs.SetString("JumpKey", keyCode.ToString());
+                        }
+                        else if (focusedButtonTextObject == motionRightKeyButtonText)
+                        {
+                            PlayerPrefs.SetString("MoveRightKey", keyCode.ToString());
+                        }
+                        else
+                        {
+                            PlayerPrefs.SetString("MoveLeftKey", keyCode.ToString());
+                        }
                     }
                 }
                 isFocused = false;
