@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//!!!!!!!!!! only for player 1! naming is bacause of playermovement! theres 2 scripts for both players
 public class Player_Controls : MonoBehaviour
 {
     public KeyCode Left = KeyCode.A;
