@@ -19,18 +19,21 @@ public class Menu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !someGameObject.activeSelf)
         {
-            Debug.Log("we are Here!1");
             someGameObject.SetActive(true);
+            Time.timeScale = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             someGameObject.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 
     public void ResumeGame()
     {
         someGameObject.SetActive(false);
+        Time.timeScale = 1;
+
     }
 
     public void ToMainMenu()

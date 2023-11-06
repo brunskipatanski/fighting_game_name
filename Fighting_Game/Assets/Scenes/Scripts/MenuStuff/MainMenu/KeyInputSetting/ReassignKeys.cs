@@ -33,35 +33,49 @@ public class ReassignKeys : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (isFocused)
         {
-            if (focusedButtonTextObject != null)
+            if (Input.anyKeyDown)
             {
-                // focusedButtonOldText = focusedButtonTextObject.text;
-                focusedButtonTextObject.text = "\" \"";
+                foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+                {
+                    if (Input.GetKeyDown(keyCode))
+                    {
+                        Debug.Log("Key pressed: " + keyCode);
+                        focusedButtonTextObject.text = "\"" + keyCode.ToString().ToLower() + "\"";
+                        // You can perform actions based on the specific key press here.
+                    }
+                }
                 isFocused = false;
+                focusedButtonTextObject = null;
             }
         }
+
+        
+        if (focusedButtonTextObject != null)
+        {
+            // focusedButtonOldText = focusedButtonTextObject.text;
+            focusedButtonTextObject.text = "\" \"";
+            isFocused = true;
+            
+        }
+
 
     }
     // AT, PLEASE add some comments on this bruh v_v, figured most of it out but plz. 
     public void JumpKeyReassign()
     {
-        isFocused = true;
         focusedButtonTextObject = jumpKeyButtonText;
     }
 
     public void MotionRightKeyReasign()
     {
-        isFocused = true;
         focusedButtonTextObject = motionRightKeyButtonText;
 
     }
 
     public void MotionLeftKeyReasign()
     {
-        isFocused = true;
         focusedButtonTextObject = motionLeftKeyButtonText;
     }
 }
