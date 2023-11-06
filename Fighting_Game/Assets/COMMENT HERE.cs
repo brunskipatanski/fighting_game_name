@@ -51,6 +51,36 @@ once we have that we cna start implementing the player 2 character cos we can se
 
 
 
+6.11,,, yo we now have 2 players on screen just made it so they pass-trhu each other should not cause issues this way.👓
+heres a list of all the moves the basic stickman guy will have (dummy 2).👓
+5A, 2A, JA. 5B, 2B, JB
+the numbers are numpad notiations. like   9  8  7
+                                          4  5  6
+                                          1  2  3
+so something like a 5A would be nautral A, or standing A
+J stands for "jump" so any moves in the air
+
+5A: basic strike, doesnt deal 2 much damage and on hit combos into 2B or 5B. should be un-punishable on block. if possible this should work as the anti air if not make another move like 4B that does a dp 👓
+2A basic low, hits low, better range then 5A. should be slower then 5A but not by a lot. should still be able to combo off something like JA 2A 2B for example.👓
+JA basic attack in the air. on grounded hit on opponent should combo into 5A or 2A, 2B 2 but not 5B. on block should be minus but not so much its punishable👓
+👓
+5B basic fireball. goes fullscreen, no combo on hit. but can be comboed into when close. from, 5A, 2A.👓
+2B a sweep, knockdown allowing for oki. deals less damage then 5b fireball. should have greater range then 2A, can be comboed into from 5A, 2A, JA👓
+JB a air fireball that shoots FORWARD not super usefull but can allow some players to play more of a zoning type game.  IMPORANT IN SHOOTS DIRECTLY FORWARD, IF IMPLEMENTED IN A WAY WHERE IT SHOOTS DOWNWARD WILL BE ANNOYING AF👓
+
+grab, basic grab, we dont even need to implement a way to tech the grab. just make it so when you are in the air the grab cant hit u. and ofc goes trhu blocks, also grabs attacks in the start up frames of their attack👓
+
+basic combos. 
+jump-in
+JA > 2A > 5B
+Ja > 5A > 2B
+you can do either 2A or 5A after JA hit, and depending on range hit 5B or 2B
+counter poke
+2A > 5B
+2A > 2B knockdown
+
+THIS IS A CANCEL BASED SYSTEM! kinda like footsies, you cancel the endlag/recovery of your move into another move👓
+hit glasses up for more details on spesific moves. ill update this with frame data and all that later👓
 
 
 
@@ -75,14 +105,7 @@ once we have that we cna start implementing the player 2 character cos we can se
 
 
 
-
-
-
-
-
-
-
-
+vv look at this dude bruh
 
 /* Sneaky Baller lurking here hehe!
  * 

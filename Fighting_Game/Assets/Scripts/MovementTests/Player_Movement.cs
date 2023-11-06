@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-    public Player_Controls player1Controls; // Reference to PlayerControl1
-   
+    // isinBlocking = if a player is blocking another players attack /is in blockstun
+    // IsAttacking = if player is the middle of attacking
+    //chat deleted most of the comments for no reason
 
+    public Player_Controls player1Controls; // Reference to PlayerControl1
+
+    public bool IsinBlocking = false;
+    public bool IsAttacking = false;
     public float MoveSpeed;
     public float JumpForce;
     public float DoubleJumpForce;
@@ -25,14 +30,22 @@ public class Player_Movement : MonoBehaviour
     public bool BlockRight = false;
     public bool BlockLeft = false;
     public float Crouchspeed;
+    public bool IsCrouching = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
+    // ^^ for jumps and stuff
     void Update()
     {
+        //A attack code. still needs check for when actively hitting the opponent for a cancel window
+        //remember ! stands for not!
+        if (Input.GetKeyDown(player1Controls.A_Attack) && !IsAttacking && !IsinBlocking)
+        {
+            Debug.Log("player 1, Did an A attack!");
+        }
+        //allowmove makes it so you can use wasd and shit to move
         if (AllowMove)
         {
             if (Input.GetKey(player1Controls.Right) && Input.GetKey(player1Controls.Left))
@@ -96,12 +109,13 @@ public class Player_Movement : MonoBehaviour
                 DoubleJumped = true;
             }
         }
-
+        // added some check for crouching for stuff like low block and low attacks
         if (Input.GetKey(player1Controls.Down))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = Crouch;
             Anime.SetBool("Crouch", true);
             Anime.SetBool("Idle", false);
+            IsCrouching = true;
             MoveSpeed = 4;
         }
         if (Input.GetKeyUp(player1Controls.Down))
@@ -109,10 +123,10 @@ public class Player_Movement : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = Standing;
             Anime.SetBool("Crouch", false);
             Anime.SetBool("Idle", true);
+            IsCrouching = false;
             MoveSpeed = 8;
         }
     }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
@@ -153,4 +167,4 @@ public class Player_Movement : MonoBehaviour
             Grounded = false;
         }
     }
-}
+    }
