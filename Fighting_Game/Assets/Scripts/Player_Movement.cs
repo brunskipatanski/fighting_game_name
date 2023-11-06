@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-    public PlayerControl1 player1Controls; // Reference to PlayerControl1
-    public PlayerControl2 player2Controls; // Reference to PlayerControl2
+    public Player_Controls player1Controls; // Reference to PlayerControl1
+   
 
     public float MoveSpeed;
     public float JumpForce;

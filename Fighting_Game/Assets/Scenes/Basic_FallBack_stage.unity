@@ -437,8 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a169267726e684884d788b9fb6a5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Controls: {fileID: 0}
-  player2Controls: {fileID: 0}
+  player1Controls: {fileID: 32551292}
   MoveSpeed: 8
   JumpForce: 200
   DoubleJumpForce: 160
@@ -469,6 +468,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06de36d8e48d824b90a249da813742d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Left: 97
+  Right: 100
+  Jump: 105
+  Down: 115
+  A_Attack: 116
+  B_Attack: 121
 --- !u!1 &68867161
 GameObject:
   m_ObjectHideFlags: 0
