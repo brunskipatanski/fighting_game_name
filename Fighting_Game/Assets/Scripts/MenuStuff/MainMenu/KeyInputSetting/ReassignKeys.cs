@@ -12,8 +12,8 @@ public class ReassignKeys : MonoBehaviour
     bool isFocused = false;
 
 
-    [SerializeField] public TextMeshProUGUI jumpKeyButton;
-    //[SerializeField] public TextMeshProUGUI motionRightKeyButton;
+    [SerializeField] public Button jumpKeyButton;
+    [SerializeField] public Button motionRightKeyButton;
     //[SerializeField] public TextMeshProUGUI motionLeftKeyButton;
 
     [SerializeField] public TextMeshProUGUI jumpKeyButtonText;
@@ -26,7 +26,8 @@ public class ReassignKeys : MonoBehaviour
     // TextMeshProUGUI focusedButton = null;
     TextMeshProUGUI focusedButtonTextObject = null;
 
-    Navigation jumpKeyButtonNavigation = new Navigation();
+    Navigation noneValue = new Navigation();
+    Navigation explicitValue = new Navigation();
 
     string player;
 
@@ -36,6 +37,9 @@ public class ReassignKeys : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        noneValue.mode = Navigation.Mode.None;
+        explicitValue.mode = Navigation.Mode.Explicit;
+
         if (gameObject.name == "Player1_setUp")
         {
             player = "P1";
@@ -88,7 +92,9 @@ public class ReassignKeys : MonoBehaviour
                     }
                 }
                 // prevent navigation during reassignment mode
-                EventSystem.current.sendNavigationEvents = true;
+                // EventSystem.current.sendNavigationEvents = true;
+                jumpKeyButton.GetComponent<Button>().navigation = explicitValue;
+                // jumpKeyButton.GetComponent<Button>().navigation;
 
                 isFocused = false;
                 focusedButtonTextObject = null;
@@ -110,8 +116,8 @@ public class ReassignKeys : MonoBehaviour
     public void JumpKeyReassign()
     {
         // Set the navigation mode to "None"
-        jumpKeyButtonNavigation.mode = Navigation.Mode.None;
-        jumpKeyButton.GetComponent<Button>().navigation = jumpKeyButtonNavigation;
+        jumpKeyButton.GetComponent<Button>().navigation = noneValue;
+        focusedButtonTextObject = jumpKeyButtonText;
         // BlockNavigation();
     }
 
