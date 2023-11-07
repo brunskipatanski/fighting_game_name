@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ReassignKeys : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class ReassignKeys : MonoBehaviour
     bool isFocused = false;
 
 
-    //[SerializeField] public TextMeshProUGUI jumpKeyButton;
+    [SerializeField] public TextMeshProUGUI jumpKeyButton;
     //[SerializeField] public TextMeshProUGUI motionRightKeyButton;
     //[SerializeField] public TextMeshProUGUI motionLeftKeyButton;
 
@@ -25,7 +26,7 @@ public class ReassignKeys : MonoBehaviour
     // TextMeshProUGUI focusedButton = null;
     TextMeshProUGUI focusedButtonTextObject = null;
 
-    private bool blockNavigation = false;
+    Navigation jumpKeyButtonNavigation = new Navigation();
 
     string player;
 
@@ -48,19 +49,9 @@ public class ReassignKeys : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (blockNavigation)
-        {
-            // allow navigantion throughout the menu back again
-            EventSystem.current.sendNavigationEvents = true;
-            blockNavigation = false;
-        }
-
+        
         if (isFocused)
         {
-            // prevent navigation during reassignment mode
-            EventSystem.current.sendNavigationEvents = false;
-            blockNavigation = true;
-
             if (Input.anyKeyDown)
             {
                 foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
@@ -96,6 +87,9 @@ public class ReassignKeys : MonoBehaviour
                         }
                     }
                 }
+                // prevent navigation during reassignment mode
+                EventSystem.current.sendNavigationEvents = true;
+
                 isFocused = false;
                 focusedButtonTextObject = null;
             }
@@ -115,33 +109,41 @@ public class ReassignKeys : MonoBehaviour
     // AT, PLEASE add some comments on this bruh v_v, figured most of it out but plz. 
     public void JumpKeyReassign()
     {
-        focusedButtonTextObject = jumpKeyButtonText;
+        // Set the navigation mode to "None"
+        jumpKeyButtonNavigation.mode = Navigation.Mode.None;
+        jumpKeyButton.GetComponent<Button>().navigation = jumpKeyButtonNavigation;
+        // BlockNavigation();
     }
 
     public void MotionRightKeyReasign()
     {
         focusedButtonTextObject = motionRightKeyButtonText;
+        BlockNavigation();
 
     }
 
     public void MotionLeftKeyReasign()
     {
         focusedButtonTextObject = motionLeftKeyButtonText;
+        BlockNavigation();
     }
 
     public void CrouchKeyReassign()
     {
         focusedButtonTextObject = crouchKeyButtonText;
+        BlockNavigation();
     }
 
     public void A_attackKeyReassign()
     {
         focusedButtonTextObject = A_attackKeyButtonText;
+        BlockNavigation();
     }
 
     public void B_attackKeyReassign()
     {
         focusedButtonTextObject = B_attackKeyButtonText;
+        BlockNavigation();
     }
 
     public void ToDefault()
@@ -172,5 +174,10 @@ public class ReassignKeys : MonoBehaviour
         PlayerPrefs.DeleteKey("A_attackKey" + player);
         PlayerPrefs.DeleteKey("B_attackKey" + player);
 
+    }
+
+    private void BlockNavigation()
+    {
+        EventSystem.current.sendNavigationEvents = false;
     }
 }

@@ -733,6 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa68b70fc2ce674986418bccbf22197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpKeyButton: {fileID: 0}
   jumpKeyButtonText: {fileID: 2042747552}
   motionRightKeyButtonText: {fileID: 361020642}
   motionLeftKeyButtonText: {fileID: 1143106760}
@@ -4696,7 +4697,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 1
-    m_SelectOnUp: {fileID: 1104145415}
+    m_SelectOnUp: {fileID: 1201352454}
     m_SelectOnDown: {fileID: 1923285213}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -7111,6 +7112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa68b70fc2ce674986418bccbf22197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpKeyButton: {fileID: 0}
   jumpKeyButtonText: {fileID: 1286763150}
   motionRightKeyButtonText: {fileID: 670264592}
   motionLeftKeyButtonText: {fileID: 412647354}
@@ -8345,10 +8347,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 2
+    m_Mode: 4
     m_WrapAround: 1
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 978599469}
+    m_SelectOnDown: {fileID: 386706028}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
