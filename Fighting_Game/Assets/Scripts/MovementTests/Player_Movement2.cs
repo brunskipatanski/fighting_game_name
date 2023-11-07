@@ -46,8 +46,8 @@ public class Player_Movement2 : MonoBehaviour
                 transform.position = (Vector2)transform.position + (Vector2.right * MoveSpeed) * Time.deltaTime;
                 MovingRight = true;
                 MovingLeft = false;
-                //For animations
                 IsMoving = true;
+                //For animations
                 Anime.SetBool("Walking", true);
 
             }

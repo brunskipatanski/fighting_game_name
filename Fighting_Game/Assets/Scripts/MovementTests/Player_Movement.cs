@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class Player_Movement : MonoBehaviour
 {
@@ -24,17 +25,18 @@ public class Player_Movement : MonoBehaviour
     private bool Grounded = false;
     public bool AllowMove = true;
     public bool IsMoving = false;
-    public Sprite Crouch;
-    public Sprite Standing;
     public Animator Anime;
     public bool BlockRight = false;
     public bool BlockLeft = false;
     public float Crouchspeed;
     public bool IsCrouching = false;
+    private SpriteRenderer sprite2;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Anime = GetComponent<Animator>();
+        sprite2 = GetComponent<SpriteRenderer>();
     }
     // ^^ for jumps and stuff
     void Update()
@@ -60,7 +62,13 @@ public class Player_Movement : MonoBehaviour
                 MovingRight = true;
                 MovingLeft = false;
                 IsMoving = true;
+                Anime.SetBool("Walking2", true);
             }
+            else if (Input.GetKey(player1Controls.Right) && !BlockRight)
+            {
+                Anime.SetBool("Walking2", false);
+            }
+
             else if (Input.GetKey(player1Controls.Left) && !BlockLeft)
             {
                 transform.position = (Vector2)transform.position + (Vector2.left * MoveSpeed) * Time.deltaTime;
@@ -112,17 +120,13 @@ public class Player_Movement : MonoBehaviour
         // added some check for crouching for stuff like low block and low attacks
         if (Input.GetKey(player1Controls.Down))
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = Crouch;
-            Anime.SetBool("Crouch", true);
-            Anime.SetBool("Idle", false);
+            Anime.SetBool("Crouch2", true);
             IsCrouching = true;
             MoveSpeed = 4;
         }
         if (Input.GetKeyUp(player1Controls.Down))
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = Standing;
-            Anime.SetBool("Crouch", false);
-            Anime.SetBool("Idle", true);
+            Anime.SetBool("Crouch2", false);
             IsCrouching = false;
             MoveSpeed = 8;
         }
