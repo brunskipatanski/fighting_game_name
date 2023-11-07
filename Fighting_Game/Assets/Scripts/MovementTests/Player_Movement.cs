@@ -7,7 +7,9 @@ public class Player_Movement : MonoBehaviour
     // IsAttacking = if player is the middle of attacking
     //chat deleted most of the comments for no reason
 
+    public Dummy_2_5A dummy2_5A;
     public Player_Controls player1Controls; // Reference to PlayerControl1
+
 
     public bool IsinBlocking = false;
     public bool IsAttacking = false;

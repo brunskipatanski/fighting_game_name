@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Wall
   - MenuWindow
+  - Hitbox
   layers:
   - Default
   - TransparentFX
