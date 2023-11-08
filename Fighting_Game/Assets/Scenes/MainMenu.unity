@@ -733,13 +733,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa68b70fc2ce674986418bccbf22197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpKeyButton: {fileID: 0}
-  motionRightKeyButton: {fileID: 0}
-  motionLeftKeyButton: {fileID: 0}
-  crouchKeyButton: {fileID: 0}
-  A_attackKeyButton: {fileID: 0}
-  B_attackKeyButton: {fileID: 0}
-  backButton: {fileID: 0}
+  jumpKeyButton: {fileID: 1233351212}
+  motionRightKeyButton: {fileID: 1411161563}
+  motionLeftKeyButton: {fileID: 315253365}
+  crouchKeyButton: {fileID: 557768731}
+  A_attackKeyButton: {fileID: 1161001669}
+  B_attackKeyButton: {fileID: 672431840}
+  backButton: {fileID: 978599469}
 --- !u!1 &247555562
 GameObject:
   m_ObjectHideFlags: 0
