@@ -12,33 +12,30 @@ public class ReassignKeys : MonoBehaviour
     bool isFocused = false;
 
 
+
+    // all buttons here
     [SerializeField] public Button jumpKeyButton;
     [SerializeField] public Button motionRightKeyButton;
-    //[SerializeField] public TextMeshProUGUI motionLeftKeyButton;
-
-    [SerializeField] public TextMeshProUGUI jumpKeyButtonText;
-    [SerializeField] public TextMeshProUGUI motionRightKeyButtonText;
-    [SerializeField] public TextMeshProUGUI motionLeftKeyButtonText;
-    [SerializeField] public TextMeshProUGUI crouchKeyButtonText;
-    [SerializeField] public TextMeshProUGUI A_attackKeyButtonText;
-    [SerializeField] public TextMeshProUGUI B_attackKeyButtonText;
+    [SerializeField] public Button motionLeftKeyButton;
+    [SerializeField] public Button crouchKeyButton;
+    [SerializeField] public Button A_attackKeyButton;
+    [SerializeField] public Button B_attackKeyButton;
+    [SerializeField] public Button backButton;
 
     // TextMeshProUGUI focusedButton = null;
     TextMeshProUGUI focusedButtonTextObject = null;
+    // Focused Button
+    // private Button focusedButton = null;
 
-    Navigation noneValue = new Navigation();
-    Navigation explicitValue = new Navigation();
+    Navigation navNone = new Navigation();
 
     string player;
 
 
-    //string focusedButtonOldText = null;
-
     // Start is called before the first frame update
     void Start()
     {
-        noneValue.mode = Navigation.Mode.None;
-        explicitValue.mode = Navigation.Mode.Explicit;
+        navNone.mode = Navigation.Mode.None;
 
         if (gameObject.name == "Player1_setUp")
         {
@@ -48,6 +45,26 @@ public class ReassignKeys : MonoBehaviour
         {
             player = "P2";
         }
+
+        // Get all previously set reassgned keys and display them
+        if (player == "P1")
+        {
+            jumpKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"" + PlayerPrefs.GetString("JumpKeyP1", "W").ToLower() + "\"";
+            motionRightKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"" + PlayerPrefs.GetString("MoveRightKeyP1", "D").ToLower() + "\"";
+            motionLeftKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"" + PlayerPrefs.GetString("MoveLeftKeyP1", "A").ToLower() + "\"";
+            crouchKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"" + PlayerPrefs.GetString("CrouchKeyP1", "S").ToLower() + "\"";
+            A_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"" + PlayerPrefs.GetString("A_attackKeyP1", "R").ToLower() + "\"";
+            B_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"" + PlayerPrefs.GetString("B_attackKeyP1", "T").ToLower() + "\"";
+        }
+        //else if (player == "P2")
+        //{
+        //    jumpKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"i\"";
+        //    motionRightKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"l\"";
+        //    motionLeftKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"j\"";
+        //    crouchKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"k\"";
+        //    A_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"o\"";
+        //    B_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"p\"";
+        //}
     }
 
     // Update is called once per frame
@@ -65,36 +82,73 @@ public class ReassignKeys : MonoBehaviour
                         Debug.Log("Key pressed: " + keyCode);
                         focusedButtonTextObject.text = "\"" + keyCode.ToString().ToLower() + "\""; 
 
-                        if (focusedButtonTextObject == jumpKeyButtonText)
+                        if (focusedButtonTextObject == jumpKeyButton.GetComponentInChildren<TextMeshProUGUI>())
                         {
                             PlayerPrefs.SetString("JumpKey" + player, keyCode.ToString());
+
+                            // bring back to the explicit navigation state
+                            Navigation nav = new Navigation();
+                            nav.mode = Navigation.Mode.Explicit;
+                            nav.selectOnDown = motionRightKeyButton;
+                            nav.selectOnUp = backButton;
+                            jumpKeyButton.navigation = nav;
                         }
-                        else if (focusedButtonTextObject == motionRightKeyButtonText)
+                        else if (focusedButtonTextObject == motionRightKeyButton.GetComponentInChildren<TextMeshProUGUI>())
                         {
                             PlayerPrefs.SetString("MoveRightKey" + player, keyCode.ToString());
+
+                            // bring back to the vertical navigation state
+                            Navigation nav = new Navigation();
+                            nav.mode = Navigation.Mode.Vertical;
+                            motionRightKeyButton.navigation = nav;
                         }
-                        else if (focusedButtonTextObject == motionLeftKeyButtonText)
+                        else if (focusedButtonTextObject == motionLeftKeyButton.GetComponentInChildren<TextMeshProUGUI>())
                         {
                             PlayerPrefs.SetString("MoveLeftKey" + player, keyCode.ToString());
+
+                            // bring back to the vertical navigation state
+                            Navigation nav = new Navigation();
+                            nav.mode = Navigation.Mode.Vertical;
+                            motionLeftKeyButton.navigation = nav;
                         }
-                        else if (focusedButtonTextObject == crouchKeyButtonText)
+                        else if (focusedButtonTextObject == crouchKeyButton.GetComponentInChildren<TextMeshProUGUI>())
                         {
                             PlayerPrefs.SetString("CrouchKey" + player, keyCode.ToString());
+
+                            // bring back to the vertical navigation state
+                            Navigation nav = new Navigation();
+                            nav.mode = Navigation.Mode.Vertical;
+                            crouchKeyButton.navigation = nav;
                         }
-                        else if (focusedButtonTextObject == A_attackKeyButtonText)
+                        else if (focusedButtonTextObject == A_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>())
                         {
                             PlayerPrefs.SetString("A_attackKey" + player, keyCode.ToString());
+
+                            // bring back to the vertical navigation state
+                            Navigation nav = new Navigation();
+                            nav.mode = Navigation.Mode.Vertical;
+                            A_attackKeyButton.navigation = nav;
                         }
                         else
                         {
                             PlayerPrefs.SetString("B_attackKey" + player, keyCode.ToString());
+
+                            // bring back to the vertical navigation state
+                            Navigation nav = new Navigation();
+                            nav.mode = Navigation.Mode.Vertical;
+                            B_attackKeyButton.navigation = nav;
                         }
                     }
                 }
                 // prevent navigation during reassignment mode
                 // EventSystem.current.sendNavigationEvents = true;
-                jumpKeyButton.GetComponent<Button>().navigation = explicitValue;
-                // jumpKeyButton.GetComponent<Button>().navigation;
+
+
+                // Set navigation back to explicit in order to revert cycling through reassignment fields
+                // if (focusedButtonTextObject == jumpKeyButton.GetComponentInChildren<TextMeshProUGUI>())
+                
+
+                Debug.Log("we are here");
 
                 isFocused = false;
                 focusedButtonTextObject = null;
@@ -115,62 +169,73 @@ public class ReassignKeys : MonoBehaviour
     // AT, PLEASE add some comments on this bruh v_v, figured most of it out but plz. 
     public void JumpKeyReassign()
     {
-        // Set the navigation mode to "None"
-        jumpKeyButton.GetComponent<Button>().navigation = noneValue;
-        focusedButtonTextObject = jumpKeyButtonText;
-        // BlockNavigation();
+        // Set the navigation mode to "None" in order to block it
+        jumpKeyButton.navigation = navNone;
+
+        // jumpKeyButton
+        focusedButtonTextObject = jumpKeyButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void MotionRightKeyReasign()
     {
-        focusedButtonTextObject = motionRightKeyButtonText;
-        BlockNavigation();
+        // Set the navigation mode to "None" in order to block it
+        motionRightKeyButton.navigation = navNone;
+
+        focusedButtonTextObject = motionRightKeyButton.GetComponentInChildren<TextMeshProUGUI>();
 
     }
 
     public void MotionLeftKeyReasign()
     {
-        focusedButtonTextObject = motionLeftKeyButtonText;
-        BlockNavigation();
+        // Set the navigation mode to "None" in order to block it
+        motionLeftKeyButton.navigation = navNone;
+
+        focusedButtonTextObject = motionLeftKeyButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void CrouchKeyReassign()
     {
-        focusedButtonTextObject = crouchKeyButtonText;
-        BlockNavigation();
+        // Set the navigation mode to "None" in order to block it
+        crouchKeyButton.navigation = navNone;
+
+        focusedButtonTextObject = crouchKeyButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void A_attackKeyReassign()
     {
-        focusedButtonTextObject = A_attackKeyButtonText;
-        BlockNavigation();
+        // Set the navigation mode to "None" in order to block it
+        A_attackKeyButton.navigation = navNone;
+
+        focusedButtonTextObject = A_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void B_attackKeyReassign()
     {
-        focusedButtonTextObject = B_attackKeyButtonText;
-        BlockNavigation();
+        // Set the navigation mode to "None" in order to block it
+        B_attackKeyButton.navigation = navNone;
+
+        focusedButtonTextObject = B_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void ToDefault()
     {
         if (player == "P1")
         {
-            jumpKeyButtonText.text = "\"w\"";
-            motionRightKeyButtonText.text = "\"d\"";
-            motionLeftKeyButtonText.text = "\"a\"";
-            crouchKeyButtonText.text = "\"s\"";
-            A_attackKeyButtonText.text = "\"r\"";
-            B_attackKeyButtonText.text = "\"t\"";
+            jumpKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"w\"";
+            motionRightKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"d\"";
+            motionLeftKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"a\"";
+            crouchKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"s\"";
+            A_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"r\"";
+            B_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"t\"";
         }
         else if (player == "P2")
         {
-            jumpKeyButtonText.text = "\"i\"";
-            motionRightKeyButtonText.text = "\"l\"";
-            motionLeftKeyButtonText.text = "\"j\"";
-            crouchKeyButtonText.text = "\"k\"";
-            A_attackKeyButtonText.text = "\"o\"";
-            B_attackKeyButtonText.text = "\"p\"";
+            jumpKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"i\"";
+            motionRightKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"l\"";
+            motionLeftKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"j\"";
+            crouchKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"k\"";
+            A_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"o\"";
+            B_attackKeyButton.GetComponentInChildren<TextMeshProUGUI>().text = "\"p\"";
         }
 
         PlayerPrefs.DeleteKey("JumpKey" + player);
@@ -180,10 +245,5 @@ public class ReassignKeys : MonoBehaviour
         PlayerPrefs.DeleteKey("A_attackKey" + player);
         PlayerPrefs.DeleteKey("B_attackKey" + player);
 
-    }
-
-    private void BlockNavigation()
-    {
-        EventSystem.current.sendNavigationEvents = false;
     }
 }

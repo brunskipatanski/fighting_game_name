@@ -733,14 +733,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa68b70fc2ce674986418bccbf22197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpKeyButton: {fileID: 1233351212}
+  jumpKeyButton: {fileID: 0}
   motionRightKeyButton: {fileID: 0}
-  jumpKeyButtonText: {fileID: 2042747552}
-  motionRightKeyButtonText: {fileID: 361020642}
-  motionLeftKeyButtonText: {fileID: 1143106760}
-  crouchKeyButtonText: {fileID: 2139449418}
-  A_attackKeyButtonText: {fileID: 1314529114}
-  B_attackKeyButtonText: {fileID: 391491727}
+  motionLeftKeyButton: {fileID: 0}
+  crouchKeyButton: {fileID: 0}
+  A_attackKeyButton: {fileID: 0}
+  B_attackKeyButton: {fileID: 0}
+  backButton: {fileID: 0}
 --- !u!1 &247555562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,7 +1325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"a"'
+  m_text: '"t"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5528,10 +5527,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 2
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1406494922}
+    m_SelectOnDown: {fileID: 978599469}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -7115,12 +7114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpKeyButton: {fileID: 1923285213}
   motionRightKeyButton: {fileID: 386706028}
-  jumpKeyButtonText: {fileID: 1286763150}
-  motionRightKeyButtonText: {fileID: 670264592}
-  motionLeftKeyButtonText: {fileID: 412647354}
-  crouchKeyButtonText: {fileID: 742186904}
-  A_attackKeyButtonText: {fileID: 1484714121}
-  B_attackKeyButtonText: {fileID: 358629177}
+  motionLeftKeyButton: {fileID: 1104145415}
+  crouchKeyButton: {fileID: 639687787}
+  A_attackKeyButton: {fileID: 546656362}
+  B_attackKeyButton: {fileID: 1406494922}
+  backButton: {fileID: 978599469}
 --- !u!1 &1484714119
 GameObject:
   m_ObjectHideFlags: 0
@@ -7178,7 +7176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"a"'
+  m_text: '"r"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
