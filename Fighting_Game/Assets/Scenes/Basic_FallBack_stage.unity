@@ -276,7 +276,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.3323, y: 0.2108, z: 0.16101868}
-  m_LocalScale: {x: 1.3080033, y: 1.4177761, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1410900159}
@@ -438,10 +438,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a169267726e684884d788b9fb6a5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dummy2_5A: {fileID: 32551293}
+  P1_5A: {fileID: 32551293}
   player1Controls: {fileID: 32551292}
   IsinBlocking: 0
-  IsAttacking: 1
+  IsAttacking: 0
   MoveSpeed: 8
   JumpForce: 200
   DoubleJumpForce: 160
@@ -486,9 +486,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 32551283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4dc140fdda8cb4499611336aaf94390, type: 3}
+  m_Script: {fileID: 11500000, guid: df315f9fc9ec2fa459aeeb46070d04f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fiveA_HitBoxObject: {fileID: 975497937}
 --- !u!1 &68867161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,6 +1672,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &975497937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 975497938}
+  m_Layer: 0
+  m_Name: 5ahitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &975497938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975497937}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.001399, y: 0.19980182, z: 0.03472197}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1103941206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,7 +2368,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.02, y: 0.26, z: 0.16101868}
-  m_LocalScale: {x: 1.4965109, y: 1.4965109, z: 1.4965109}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.4965109}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1410900159}
@@ -2420,7 +2452,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.029241204}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2431,7 +2463,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 3.8}
+  m_Size: {x: 1.25, y: 3.8584821}
   m_EdgeRadius: 0
 --- !u!50 &1605110932
 Rigidbody2D:
@@ -2533,6 +2565,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1674193498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674193499}
+  m_Layer: 0
+  m_Name: Hitboxes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1674193499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674193498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.0551825, y: 3.7100663, z: -0.0793457}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1929160023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2844,3 +2907,5 @@ SceneRoots:
   - {fileID: 1425306375}
   - {fileID: 2089010193}
   - {fileID: 68867164}
+  - {fileID: 1674193499}
+  - {fileID: 975497938}

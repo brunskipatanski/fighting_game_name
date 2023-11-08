@@ -7,7 +7,7 @@ public class Player_Movement : MonoBehaviour
     // IsAttacking = if player is the middle of attacking
     //chat deleted most of the comments for no reason
 
-    // public Dummy_2_5A dummy2_5A;
+    public Dummy2_5A P1_5A;
     public Player_Controls player1Controls; // Reference to PlayerControl1
 
 
@@ -45,9 +45,13 @@ public class Player_Movement : MonoBehaviour
     {
         //A attack code. still needs check for when actively hitting the opponent for a cancel window
         //remember ! stands for not!
-        if (Input.GetKeyDown(player1Controls.A_Attack) && !IsAttacking && !IsinBlocking)
+        // && !IsAttacking && !IsinBlocking
+        if (Input.GetKeyDown(player1Controls.A_Attack))
         {
-            Debug.Log("player 1, Did an A attack!");
+            P1_5A.Spawn();
+            //when callind a method you put () at the end
+            Debug.Log("player move, hit!");
+
         }
         //allowmove makes it so you can use wasd and shit to move
         if (AllowMove)

@@ -112,7 +112,7 @@ public class Player_Movement2 : MonoBehaviour
                 DoubleJumped = true;
             }
         }
-
+        // remember to check if player is crouching when performing a jump, rn the chars can just crouch and then jump. like this aint mario bro
         if (Input.GetKey(player2Controls.Down))
         {
 

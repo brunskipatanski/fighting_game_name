@@ -1,4 +1,5 @@
-﻿using System.Collections;
+/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ public class Dummy2_5A : MonoBehaviour
         {
             // Apply damage
         }
-        */
+        
         // Destroy the hitbox after the attack is resolved
         //Destroy(hitboxCollider);
     }
@@ -36,7 +37,7 @@ public class Dummy2_5A : MonoBehaviour
         return System.Array.Exists(CancelInto, move => move == NextMove);
     }
 }
-/*
+
 if (playerInput.AttackButtonPressed)
 {
     if (dummy2_5A.CanCancelInto(nextMove))
@@ -49,9 +50,10 @@ if (playerInput.AttackButtonPressed)
     }
 }
 
-/*  Assuming you have a collision check function called HitOpponent
+  Assuming you have a collision check function called HitOpponent
 if (HitOpponent())
 {
     dummy2_5A.Execute();
 }
+
 */
